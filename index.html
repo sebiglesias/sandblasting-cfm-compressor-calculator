@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandblasting Nozzle CFM & Air Compressor Sizing Calculator — Accurate Material Estimator</title>
+  <meta name="description" content="Calculate required air volume in CFM at 90 PSI, minimum compressor horsepower (HP), and airline diameter for abrasive sandblasting nozzles.">
+  <link rel="canonical" href="https://sebiglesias.com.ar/sandblasting-cfm-compressor-calculator/">
+  <meta name="theme-color" content="#eab308">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sandblasting Nozzle CFM & Air Compressor Sizing Calculator">
+  <meta property="og:description" content="Calculate required air volume in CFM at 90 PSI, minimum compressor horsepower (HP), and airline diameter for abrasive sandblasting nozzles.">
+  <meta property="og:url" content="https://sebiglesias.com.ar/sandblasting-cfm-compressor-calculator/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2BNDBQP0W7');
+  </script>
+
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sandblasting Nozzle CFM & Air Compressor Sizing Calculator",
+    "url": "https://sebiglesias.com.ar/sandblasting-cfm-compressor-calculator/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "description": "Calculate required air volume in CFM at 90 PSI, minimum compressor horsepower (HP), and airline diameter for abrasive sandblasting nozzles.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is my air compressor running constantly while blasting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sandblasting is the single most air-intensive workshop tool. A small #4 nozzle (1/8\") consumes 21 CFM continuously. If your compressor produces only 12 CFM, your tank pressure will rapidly plummet below the 80 PSI needed for productive blasting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use beach or playground play sand?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ABSOLUTELY NOT. OSHA strictly prohibits using crystalline silica sand for abrasive blasting. When silica sand impacts metal, it fractures into microscopic respirable crystalline dust that causes irreversible, incurable silicosis lung disease."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does moisture in the airline cause blasting to fail?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compressed air creates significant condensation. Water droplets mixing with fine blast abrasive in the nozzle cause instant caking and mud clogs. A dedicated particulate filter and desiccant air dryer are mandatory."
+        }
+      }
+    ]
+  }
+]
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">⚡ Blasting Standards & Fluid Air Compression Ratios</div>
+      <h1>Sandblasting Nozzle CFM & Compressor Calculator</h1>
+      <p class="subtitle">Calculate required air volume (CFM at 90 PSI), minimum compressor horsepower, and tank size based on blast nozzle orifice diameter.</p>
+    </header>
+
+    <!-- AdSense Top Banner -->
+    <div style="text-align:center; margin: 16px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <main class="calc-grid">
+      <!-- Inputs Card -->
+      <form class="card" id="sandblasting-cfm-compressor-calculator-form" onsubmit="event.preventDefault();">
+        <h2>📐 Blaster Nozzle & Operating Pressure</h2>
+        
+        <div class="input-row">
+          <div class="form-group">
+            <label for="nozzleOrifice">Blast Nozzle Orifice Size</label>
+            <select id="nozzleOrifice">
+              <option value="6">#2 Orifice (1/16" / 1.6 mm - Small Detail)</option>
+              <option value="12">#3 Orifice (3/32" / 2.4 mm - Cabinet Hobbyist)</option>
+              <option value="21" selected>#4 Orifice (1/8" / 3.2 mm - Standard Shop Cabinet)</option>
+              <option value="38">#5 Orifice (5/32" / 4.0 mm - Heavy Production)</option>
+              <option value="55">#6 Orifice (3/16" / 4.8 mm - Commercial Sandblasting)</option>
+              <option value="85">#7 Orifice (1/4" / 6.4 mm - Industrial Pressure Pot)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="blastPressure">Operating Blast Pressure</label>
+            <div class="input-wrap">
+              <input type="number" id="blastPressure" step="5" min="40" max="120" value="90" required>
+              <span class="input-suffix">PSI</span>
+            </div>
+            <span class="hint">Standard abrasive blasting = 80–100 PSI</span>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="form-group">
+            <label for="mediaType">Abrasive Blasting Media</label>
+            <select id="mediaType">
+              <option value="glass">Glass Bead (Cleaning & Satin Finish)</option>
+              <option value="alum_oxide" selected>Aluminum Oxide (Aggressive Rust & Paint Stripping)</option>
+              <option value="garnet">Crushed Garnet (Industrial Profiling)</option>
+              <option value="walnut">Walnut Shells (Soft Substrate Cleaning)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dutyType">Operation Duty Cycle</label>
+            <select id="dutyType">
+              <option value="intermittent">Intermittent / Spot Blasting (50% Duty)</option>
+              <option value="continuous" selected>Continuous Production Blasting (100% Duty)</option>
+            </select>
+          </div>
+        </div>
+        
+      </form>
+
+      <!-- Results Card -->
+      <div class="card">
+        <h2>📊 Compressor Requirements & Sizing</h2>
+        
+        <div class="result-hero">
+          <div class="result-hero-val" id="resCfmNeeded">21.0 CFM @ 90 PSI</div>
+          <div class="result-hero-label">Required Continuous Air Delivery</div>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-desc">Minimum Compressor Motor HP</div>
+            <div class="spec-val" id="resCompHp">5.0 – 7.5 HP (2-Stage)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Minimum Receiver Tank Size</div>
+            <div class="spec-val" id="resTankGal">60 to 80 Gallons</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Recommended Air Hose Inner Diameter</div>
+            <div class="spec-val" id="resHoseId">1/2" ID Hose Minimum</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-desc">Silica Sand Hazard Alert</div>
+            <div class="spec-val">OSHA Crystalline Silica Ban</div>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+
+    
+
+    <!-- Amazon Supplies Box -->
+    <section class="supplies-card">
+      <h3>🛠️ Recommended Blast Cabinets, Ceramic Nozzles & Air Dryers</h3>
+      <div class="supplies-grid">
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Benchtop Heavy-Duty Steel Abrasive Sandblasting Cabinet</div>
+            <div class="supply-desc">Sealed blasting cabinet with built-in halogen lamp, heavy rubber gauntlets, and siphon blast gun.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=sandblasting+cabinet+benchtop+steel&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Tungsten Carbide Long-Life Blast Nozzles (#3 / #4 Pack)</div>
+            <div class="supply-desc">Ultra-hard wear-resistant tungsten nozzles lasting 50x longer than standard cheap ceramic tips.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=tungsten+carbide+sandblast+nozzle&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Dual Stage Compressed Air Filter & Desiccant Dryer (1/2" NPT)</div>
+            <div class="supply-desc">Removes 99.9% of moisture and oil to prevent damp abrasive media clumping in your blast siphon.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=compressed+air+desiccant+dryer+filter+half+inch&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Brown Aluminum Oxide Blasting Media (70 Grit / 25 lbs)</div>
+            <div class="supply-desc">Sharp, highly recyclable fast-cutting abrasive ideal for powder coat removal and metal etching.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=aluminum+oxide+blasting+abrasive+media&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Check on Amazon →</a>
+        </div>
+      </div>
+      <p style="font-size:0.75rem; color:#94a3b8; margin-top:14px; margin-bottom:0; text-align:center;">
+        ⚖️ <em>Affiliate Notice: As an Amazon Associate, this site earns from qualifying purchases at no additional cost to you. We strictly link to blast cabinets, tungsten carbide nozzles, and desiccant air dryers.</em>
+      </p>
+    </section>
+
+    <!-- FAQ Section for SEO -->
+    <section class="faq-section">
+      <h2 style="font-size:1.35rem; color:#ffffff; margin-bottom:16px;">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">Why is my air compressor running constantly while blasting?</div>
+        <div class="faq-a">Sandblasting is the single most air-intensive workshop tool. A small #4 nozzle (1/8") consumes 21 CFM continuously. If your compressor produces only 12 CFM, your tank pressure will rapidly plummet below the 80 PSI needed for productive blasting.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use beach or playground play sand?</div>
+        <div class="faq-a">ABSOLUTELY NOT. OSHA strictly prohibits using crystalline silica sand for abrasive blasting. When silica sand impacts metal, it fractures into microscopic respirable crystalline dust that causes irreversible, incurable silicosis lung disease.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why does moisture in the airline cause blasting to fail?</div>
+        <div class="faq-a">Compressed air creates significant condensation. Water droplets mixing with fine blast abrasive in the nozzle cause instant caking and mud clogs. A dedicated particulate filter and desiccant air dryer are mandatory.</div>
+      </div>
+    </section>
+
+    <!-- Bottom AdSense Banner -->
+    <div style="text-align:center; margin: 32px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer>
+      <p>© 2026 <a href='https://sebiglesias.com.ar/'>sebiglesias.com.ar</a> · Sandblasting CFM Calculator. Trade and surface preparation reference tool.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
